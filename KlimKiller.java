@@ -13,16 +13,17 @@ import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
 public class KlimKiller implements KeyListener {
-
+	
 	String[] names = { "клим", "илья", "вася", "андрей", "гриша", "никита", "денис", "дима", "глеб", "антон", "валера",
 			"котик", "зайка", "жираф", "путин", "вова" };
-
+	
+	//создание jframe с случайным тайтлом
 	JFrame f = new JFrame(names[ThreadLocalRandom.current().nextInt(names.length)] + " пидор");
 	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-
+	//случайная длина и ширина по экрану
 	int width = ThreadLocalRandom.current().nextInt(dimension.width++);
 	int height = ThreadLocalRandom.current().nextInt(dimension.height++);
-
+	//создание таймера
 	static Timer timer = new Timer(50, new ActionListener() {
 
 		@Override
@@ -31,7 +32,7 @@ public class KlimKiller implements KeyListener {
 			System.gc();
 		}
 	});
-
+	//само окно
 	public KlimKiller() {
 		f.addKeyListener(this);
 		f.getContentPane().setBackground(new Color(ThreadLocalRandom.current().nextInt(256),
@@ -41,12 +42,12 @@ public class KlimKiller implements KeyListener {
 		f.setResizable(false);
 		f.setVisible(true);
 	}
-
+	
 	public static void main(String[] args) {
 		new KlimKiller();
 		timer.start();
 	}
-
+	//чекает нажатие на кнопку
 	@Override
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
